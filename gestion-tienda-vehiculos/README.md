@@ -53,5 +53,3 @@ Con un método `double calcularCostoAlquiler(int dias);`
 - Encapsulamiento (atributos `private` + getters)
 - Composición (`Concesionaria` tiene una lista de `Vehiculo`)
 - `static` (contador compartido entre instancias)
-
-Cuando tengas tu código, lo reviso con toda sinceridad — errores de diseño, malas prácticas, cosas que sí quedaron bien, todo.
