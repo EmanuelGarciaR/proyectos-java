@@ -1,6 +1,6 @@
 package modelo;
 
-public class Motocicleta extends Vehiculo {
+public class Motocicleta extends Vehiculo implements Alquilable {
     protected int cilindraje;
 
     public Motocicleta(String marca, String modelo, int anio, double precioBase, int cilindraje) {
@@ -10,7 +10,12 @@ public class Motocicleta extends Vehiculo {
 
     @Override
     public double calcularPrecioFinal() {
-        final double impuestos = this.precioBase * 0.08;
-        return this.precioBase + impuestos;
+        final double IMPUESTOS = this.precioBase * 0.08;
+        return this.precioBase + IMPUESTOS;
+    }
+
+    @Override
+    public double calcularCostoAlquiler(int dias) {
+        return (precioBase * 0.008) * dias;
     }
 }
