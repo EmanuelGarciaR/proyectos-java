@@ -1,0 +1,10 @@
+# Compilados
+bin/
+*.class
+
+# Editor
+.vscode/
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
