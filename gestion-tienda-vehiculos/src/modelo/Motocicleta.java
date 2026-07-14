@@ -1,7 +1,7 @@
 package modelo;
 
 public class Motocicleta extends Vehiculo implements Alquilable {
-    protected int cilindraje;
+    private int cilindraje;
 
     public Motocicleta(String marca, String modelo, int anio, double precioBase, int cilindraje) {
         super(marca, modelo, anio, precioBase);
@@ -17,5 +17,15 @@ public class Motocicleta extends Vehiculo implements Alquilable {
     @Override
     public double calcularCostoAlquiler(int dias) {
         return (precioBase * 0.008) * dias;
+    }
+
+    @Override
+    public void mostrarInfo() {
+        super.mostrarInfo();
+        System.out.println("Cilindraje: " + this.cilindraje);
+    }
+
+    public int getCilindraje() {
+        return cilindraje;
     }
 }

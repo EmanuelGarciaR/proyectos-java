@@ -12,6 +12,7 @@ public class Camion extends Vehiculo {
     public double calcularPrecioFinal() {
         final double IMPUESTOS = this.precioBase * 0.2;
         if (this.capacidadCargaToneladas > 10) {
+            System.out.println("Aplica recargo...");
             final int RECARGO = 500000;
             return this.precioBase + IMPUESTOS + RECARGO;
         } else {
