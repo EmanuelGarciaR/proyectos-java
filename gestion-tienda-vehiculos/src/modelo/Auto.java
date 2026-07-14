@@ -10,8 +10,8 @@ public class Auto extends Vehiculo {
 
     @Override
     public double calcularPrecioFinal() {
-        double impuesto = this.precioBase * 0.15;
-        return this.precioBase + impuesto;
+        double IMPUESTOS = this.precioBase * 0.15;
+        return this.precioBase + IMPUESTOS;
     }
 
     public int getNumeroPuertas() {
