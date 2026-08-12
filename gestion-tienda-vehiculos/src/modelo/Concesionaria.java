@@ -3,6 +3,7 @@ package modelo;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.OptionalDouble;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
@@ -59,4 +60,9 @@ public class Concesionaria {
                 .collect(Collectors.groupingBy(v -> v.getClass().getSimpleName(), Collectors.counting()));
     }
 
+    public OptionalDouble calcularPrecioPromedio() {
+        return inventario.stream()
+                .mapToDouble(Vehiculo::calcularPrecioFinal)
+                .average();
+    }
 }
