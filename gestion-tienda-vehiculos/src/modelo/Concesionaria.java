@@ -3,6 +3,7 @@ package modelo;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 public class Concesionaria {
@@ -46,6 +47,16 @@ public class Concesionaria {
     public Optional<Vehiculo> obtenerVehiculoMasCaro() {
         return inventario.stream()
                 .max(Comparator.comparingDouble(Vehiculo::calcularPrecioFinal));
+    }
+
+    public Map<String, Long> cuantosVehiculos() {
+        return inventario.stream()
+                .collect(Collectors.groupingBy(Vehiculo::getMarca, Collectors.counting()));
+    }
+
+    public Map<String, Long> cuantosVehiculosTipo() {
+        return inventario.stream()
+                .collect(Collectors.groupingBy(v -> v.getClass().getSimpleName(), Collectors.counting()));
     }
 
 }
