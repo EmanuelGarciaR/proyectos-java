@@ -1,7 +1,9 @@
 package modelo;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Concesionaria {
     private List<Vehiculo> inventario = new ArrayList<>();
@@ -32,6 +34,18 @@ public class Concesionaria {
 
     public int getTotalVehiculosRegistrados() {
         return totalVehiculosRegistrados;
+    }
+
+    public List<String> obtenerMarcasUnicas() {
+        return inventario.stream()
+                .map(Vehiculo::getMarca)
+                .distinct()
+                .collect(Collectors.toList());
+    }
+
+    public Optional<Vehiculo> obtenerVehiculoMasCaro() {
+        return inventario.stream()
+                .max(Comparator.comparingDouble(Vehiculo::calcularPrecioFinal));
     }
 
 }
