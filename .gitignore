@@ -5,6 +5,8 @@ bin/
 # Editor
 .vscode/
 
-# Sistema operativo
+# Sistema operativ  o
 .DS_Store
 Thumbs.db
+
+target/
