@@ -5,6 +5,10 @@ import modelo.Concesionaria;
 import modelo.Motocicleta;
 import modelo.Vehiculo;
 
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+
 public class App {
     public static void main(String[] args) throws Exception {
         Concesionaria concesionaria1 = new Concesionaria();
@@ -16,12 +20,26 @@ public class App {
         System.out.println("El precio total de los vehiculos es : " + concesionaria1.calcularPrecioFinal());
         System.out.println("Total de vehiculos registrados: " + concesionaria1.getTotalVehiculosRegistrados());
 
-        for (Vehiculo v : concesionaria1.getInventario()) {
-            if (v instanceof Alquilable) {
-                Alquilable alquilable = (Alquilable) v;
-                System.out.printf("El vehículo si lo alquilamos por 5 días: %.2f%n",
-                        alquilable.calcularCostoAlquiler(5));
+        List<String> marcasUnicas = concesionaria1.obtenerMarcasUnicas();
+        System.out.println("Marcas Únicas: " + marcasUnicas);
+
+        Optional<Vehiculo> vehiculoMasCaro = concesionaria1.obtenerVehiculoMasCaro();
+        vehiculoMasCaro.ifPresentOrElse(v -> v.mostrarInfo(),
+                () -> System.out.println("No hay vehiculos para mostrar"));
+
+        Map<String, Long> vehiculosTipos = concesionaria1.cuantosVehiculosTipo();
+        System.out.println(vehiculosTipos);
+
+        Map<String, Long> vehiculosMarca = concesionaria1.cuantosVehiculos();
+        System.out.println(vehiculosMarca);
+
+        System.out.println("Los vehiculos que implementan Alquilable son los siguientes: ");
+        List<Vehiculo> alquilables = concesionaria1.listarAlquilables();
+        for (Vehiculo vehiculo : alquilables) {
+            if (vehiculo instanceof Alquilable) {
+                System.out.println(vehiculo.getMarca());
             }
         }
+
     }
 }

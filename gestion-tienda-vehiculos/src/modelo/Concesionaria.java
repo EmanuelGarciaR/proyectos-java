@@ -3,8 +3,9 @@ package modelo;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
 import java.util.OptionalDouble;
-import java.util.stream.Collector;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class Concesionaria {
@@ -64,5 +65,11 @@ public class Concesionaria {
         return inventario.stream()
                 .mapToDouble(Vehiculo::calcularPrecioFinal)
                 .average();
+    }
+
+    public List<Vehiculo> listarAlquilables() {
+        return inventario.stream()
+                .filter(v -> v instanceof Alquilable)
+                .collect(Collectors.toList());
     }
 }
